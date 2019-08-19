@@ -544,6 +544,7 @@
                                     <TabItem x:Name="zwmf" Header="植物魔法">
                                         <Grid/>
                                     </TabItem>
+                                    <TabItem x:Name="jiemian_神秘时代4"/>
                                 </TabControl>
                             </Canvas>
                             <GridSplitter 
