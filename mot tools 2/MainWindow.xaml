@@ -1,0 +1,588 @@
+﻿<controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:mot_tools_2"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:controlzex="urn:controlzex" x:Class="mot_tools_2.MainWindow"
+                      mc:Ignorable="d"
+        Title="Scripts maker" Height="900" Width="1600"  Loaded="MetroWindow_Loaded" >
+    <controls:MetroWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedTabControl.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:MetroWindow.Resources>
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button x:Name="settings" Content="设置" Click="Settings_Click" />
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+    <controls:MetroWindow.Flyouts>
+        <controls:FlyoutsControl>
+            <controls:Flyout x:Name="cbl" Header="快捷菜单" Position="Right" Width="450" VerticalAlignment="Stretch">
+                <!-- Your custom content here -->
+                <Grid HorizontalAlignment="Left"  VerticalAlignment="Top"  Width="450" Margin="0" Height="1111" >
+                    <!--这里是侧边栏哒-->
+                    <Button Style="{DynamicResource SquareButtonStyle}" Content="回到主界面"  FontSize="24" Width="140" Height="45" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49,27,0,0" Click="Button_Click_6"/>
+                    <controls:ToggleSwitch x:Name="dark_theme1"  HorizontalAlignment="Left" VerticalAlignment="Top" OffLabel="浅色界面" OnLabel="深色界面" Margin="225,32,0,0" IsCheckedChanged="Dark_theme1_IsCheckedChanged" RenderTransformOrigin="0.5,0.5" Height="30" >
+                        <controls:ToggleSwitch.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </controls:ToggleSwitch.RenderTransform>
+                    </controls:ToggleSwitch>
+                    <controls:FlipView x:Name="tips_part_Copy" Margin="50,108,67,236" BannerText="小工具" SelectedIndex="0" Width="333" Height="556" HorizontalAlignment="Left" VerticalAlignment="Top"  >
+                        <controls:FlipViewItem Height="548" Width="325.333">
+                            <Grid Background="#00000000">
+                                <TextBox x:Name="wbk_高级物品编辑_输出" HorizontalAlignment="Left" Height="47" Margin="27,458,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" Background="{x:Null}" Foreground="White" controls:TextBoxHelper.Watermark="输出..."/>
+                                <ScrollViewer HorizontalAlignment="Left" Height="337" VerticalAlignment="Top" Width="325" Margin="0,61,0,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" ClipToBounds="True">
+                                    <Grid Height="844" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Auto" Width="325">
+                                        <TextBox x:Name="wz_in2" HorizontalAlignment="Left" Height="27" Margin="31,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" Background="{x:Null}" Foreground="White" controls:TextBoxHelper.Watermark="物品标记"/>
+                                        <TextBox x:Name="wbk_物品名字_高级物品编辑" HorizontalAlignment="Left" Height="28" Margin="31,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" Background="{x:Null}" Foreground="White" controls:TextBoxHelper.Watermark="物品名字（会自动转为u码）" IsEnabled="False"/>
+                                        <controls:ToggleSwitch x:Name="t_是否自定义物品" Header="自定义物品名" Margin="10,27,0,0" OffLabel="否" OnLabel="是" RenderTransformOrigin="0.5,0.5" IsCheckedChanged="T_是否自定义物品_IsCheckedChanged" Width="112" Height="58" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                                            <controls:ToggleSwitch.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </controls:ToggleSwitch.RenderTransform>
+                                        </controls:ToggleSwitch>
+                                        <TextBox x:Name="wbk_物品lore_高级物品编辑" HorizontalAlignment="Left" Height="70" Margin="31,153,0,0" VerticalAlignment="Top" Width="257" Background="{x:Null}" Foreground="White" controls:TextBoxHelper.Watermark="物品lore(会自动转为u码)" IsEnabled="False" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
+                                        <controls:ToggleSwitch x:Name="t_是否自定义物品lore" Header="物品lore" Margin="11,101,0,0" OffLabel="否" OnLabel="是" RenderTransformOrigin="0.5,0.5" IsCheckedChanged="T_是否自定义物品lore_IsCheckedChanged" Width="112" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                                            <controls:ToggleSwitch.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </controls:ToggleSwitch.RenderTransform>
+                                        </controls:ToggleSwitch>
+                                        <TextBox x:Name="wbk_物品nbt_高级物品编辑" HorizontalAlignment="Left" Height="33" Margin="31,268,0,0" VerticalAlignment="Top" Width="257" Background="{x:Null}" Foreground="White" controls:TextBoxHelper.Watermark="物品nbt标签，不会别用" IsEnabled="False" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
+                                        <controls:ToggleSwitch x:Name="t_是否自定义物品lnbt" Header="自定义nbt标签" Margin="10,216,0,0" OffLabel="否" OnLabel="是" RenderTransformOrigin="0.5,0.5" Width="112" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" IsCheckedChanged="T_是否自定义物品lnbt_IsCheckedChanged" >
+                                            <controls:ToggleSwitch.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </controls:ToggleSwitch.RenderTransform>
+                                        </controls:ToggleSwitch>
+                                        <controls:ToggleSwitch x:Name="t_是否忽略附加值" Header="忽略附加值" Margin="11,299,0,0" OffLabel="否" OnLabel="是" RenderTransformOrigin="0.5,0.5" Width="112" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" IsCheckedChanged="T_是否忽略附加值_IsCheckedChanged" >
+                                            <controls:ToggleSwitch.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </controls:ToggleSwitch.RenderTransform>
+                                        </controls:ToggleSwitch>
+                                        <controls:ToggleSwitch x:Name="t_是否无视耐久" Header="无视耐久" Margin="82,299,0,0" OffLabel="否" OnLabel="是" RenderTransformOrigin="0.5,0.5" Width="112" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                                            <controls:ToggleSwitch.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </controls:ToggleSwitch.RenderTransform>
+                                        </controls:ToggleSwitch>
+                                        <controls:ToggleSwitch x:Name="t_是否自定义耐久" Header="自定义耐久" Margin="10,342,0,0" OffLabel="否" OnLabel="是" RenderTransformOrigin="0.5,0.5" Width="112" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" IsCheckedChanged="T_是否自定义耐久_IsCheckedChanged" >
+                                            <controls:ToggleSwitch.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </controls:ToggleSwitch.RenderTransform>
+                                        </controls:ToggleSwitch>
+                                        <TextBox x:Name="wbk_自定义耐久" HorizontalAlignment="Left" Height="33" Margin="109,357,0,0" VerticalAlignment="Top" Width="162" Background="{x:Null}" Foreground="White" controls:TextBoxHelper.Watermark="合成物品的耐久" IsEnabled="False" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
+                                        <controls:ToggleSwitch x:Name="t_是否消耗耐久or转换物品" Header="消耗/转换" Margin="10,384,0,0" OffLabel="否" OnLabel="是" RenderTransformOrigin="0.5,0.5" Width="112" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" IsCheckedChanged="T_是否消耗耐久_IsCheckedChanged" >
+                                            <controls:ToggleSwitch.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </controls:ToggleSwitch.RenderTransform>
+                                        </controls:ToggleSwitch>
+                                        <TextBox x:Name="wbk_消耗耐久" HorizontalAlignment="Left" Height="41" Margin="109,395,0,0" VerticalAlignment="Top" Width="162" Background="{x:Null}" Foreground="White" controls:TextBoxHelper.Watermark="填写数字为消耗的耐久，填写物品标签为转换物品" IsEnabled="False" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" controls:TextBoxHelper.WatermarkWrapping="WrapWithOverflow"/>
+                                        <controls:ToggleSwitch x:Name="t_是否限定nbt标签" Header="限定nbt标签" Margin="153,298,0,0" OffLabel="否" OnLabel="是" RenderTransformOrigin="0.5,0.5" Width="112" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                                            <controls:ToggleSwitch.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </controls:ToggleSwitch.RenderTransform>
+                                        </controls:ToggleSwitch>
+                                        <controls:ToggleSwitch x:Name="t_是否限定耐久" Header="限定耐久" Margin="10,427,0,0" OffLabel="否" OnLabel="是" RenderTransformOrigin="0.5,0.5" Width="112" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" IsCheckedChanged="T_是否限定耐久_IsCheckedChanged" >
+                                            <controls:ToggleSwitch.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </controls:ToggleSwitch.RenderTransform>
+                                        </controls:ToggleSwitch>
+                                        <TextBox x:Name="wbk_限定耐久" HorizontalAlignment="Left" Height="22" Margin="109,462,0,0" VerticalAlignment="Top" Width="162" Background="{x:Null}" Foreground="White" controls:TextBoxHelper.Watermark="填写数字" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" controls:TextBoxHelper.WatermarkWrapping="WrapWithOverflow" IsEnabled="False"/>
+                                        <TextBox x:Name="wbk_限定耐久大于" HorizontalAlignment="Left" Height="22" Margin="109,497,0,0" VerticalAlignment="Top" Width="64" Background="{x:Null}" Foreground="White" controls:TextBoxHelper.Watermark="大于" IsEnabled="False" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" controls:TextBoxHelper.WatermarkWrapping="WrapWithOverflow"/>
+                                        <TextBox x:Name="wbk_限定耐久小于" HorizontalAlignment="Left" Height="22" Margin="178,497,0,0" VerticalAlignment="Top" Width="64" Background="{x:Null}" Foreground="White" controls:TextBoxHelper.Watermark="小于" IsEnabled="False" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" controls:TextBoxHelper.WatermarkWrapping="WrapWithOverflow"/>
+                                        <RadioButton x:Name="dx1" Content="大于等于" HorizontalAlignment="Left" Height="19" Margin="16,474,0,0" VerticalAlignment="Top" Width="99" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Checked="Dx1_Checked">
+                                            <RadioButton.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </RadioButton.RenderTransform>
+                                        </RadioButton>
+                                        <RadioButton x:Name="dx2" Content="小于等于" HorizontalAlignment="Left" Height="19" Margin="16,488,0,0" VerticalAlignment="Top" Width="99" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Checked="Dx2_Checked">
+                                            <RadioButton.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </RadioButton.RenderTransform>
+                                        </RadioButton>
+                                        <RadioButton x:Name="dx3" Content="范围之间" HorizontalAlignment="Left" Height="19" Margin="16,502,0,0" VerticalAlignment="Top" Width="99" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Checked="Dx3_Checked">
+                                            <RadioButton.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </RadioButton.RenderTransform>
+                                        </RadioButton>
+                                    </Grid>
+                                </ScrollViewer>
+
+                                <Label Content="高级物品编辑" HorizontalAlignment="Left" Height="37" Margin="27,24,0,0" VerticalAlignment="Top" Width="162" FontSize="22" Foreground="White"/>
+                                <Button x:Name="button_高级物品编辑输出" Style="{DynamicResource SquareButtonStyle}" Content="生成"  FontSize="24" Width="103" Height="45" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="189,408,0,0" Background="{x:Null}" FontFamily="Microsoft YaHei UI" Click="Button_高级物品编辑输出_Click"/>
+                                <Button x:Name="button_高级物品编辑输出_Copy" Style="{DynamicResource SquareButtonStyle}" Content="复制"  FontSize="24" Width="103" Height="45" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="81,408,0,0" Background="{x:Null}" FontFamily="Microsoft YaHei UI" Click="Button_高级物品编辑输出_Copy_Click"/>
+                            </Grid>
+                        </controls:FlipViewItem>
+                        <controls:FlipViewItem>
+                            <Grid Background="#00000000">
+                                <Label Content="文字转u码" HorizontalAlignment="Left" Height="37" Margin="27,24,0,0" VerticalAlignment="Top" Width="132" FontSize="22" Foreground="White"/>
+                                <TextBox x:Name="wz_in1" HorizontalAlignment="Left" Height="155" Margin="27,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" Background="{x:Null}" Foreground="White" controls:TextBoxHelper.Watermark="请输入文字" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto"/>
+                                <Button Style="{DynamicResource SquareButtonStyle}" Content="转换"  FontSize="24" Width="140" Height="45" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="152,226,0,0" Background="{x:Null}" Click="Button_Click_15" FontFamily="Microsoft YaHei UI"/>
+                                <TextBox x:Name="u_out1" HorizontalAlignment="Left" Height="155" Margin="27,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" Background="{x:Null}" Foreground="White" controls:TextBoxHelper.Watermark="u码输出" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto"/>
+                                <Button Style="{DynamicResource SquareButtonStyle}" Content="复制"  FontSize="24" Width="140" Height="45" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="152,436,0,0" Background="{x:Null}" Click="Button_Click_14" FontFamily="Microsoft YaHei UI"/>
+                            </Grid>
+                        </controls:FlipViewItem>
+                    </controls:FlipView>
+                </Grid>
+            </controls:Flyout>
+        </controls:FlyoutsControl>
+    </controls:MetroWindow.Flyouts>
+    <Viewbox Stretch="Fill">
+        <Grid HorizontalAlignment="Stretch" Height="900" ClipToBounds="True" >
+            <TabControl x:Name="主界面" HorizontalAlignment="Stretch"  Background="{x:Null}" TabStripPlacement="Bottom" Margin="0,0,0,-192">
+                <TabItem x:Name="启动界面" Header="">
+                    <Grid Margin="-4,-4,-6,148.667">
+                        <controls:FlipView x:Name="tips_part" Margin="195,242,742.667,251.333" BannerText="小贴士qwq" SelectedIndex="0" SelectionChanged="Tips_part_SelectionChanged" MouseEnter="Tips_part_MouseEnter" MouseLeave="Tips_part_MouseLeave"  >
+                            <controls:FlipViewItem>
+                                <Grid Width="648.666666666667" Background="#FF2E8DEF">
+                                    <Label Content="魔改的流体标记为为&lt;liquid:液体id&gt;" HorizontalAlignment="Left" Height="36" Margin="42,29,0,0" VerticalAlignment="Top" Width="349" Foreground="White" FontSize="22"/>
+                                    <Label Content="魔改的物品标记为为&lt;物品英文id&gt;" HorizontalAlignment="Left" Height="36" Margin="42,65,0,0" VerticalAlignment="Top" Width="349" Foreground="White" FontSize="22"/>
+                                    <Label Content="界面右边的那个东东点一下有惊喜qwq" HorizontalAlignment="Left" Height="36" Margin="42,101,0,0" VerticalAlignment="Top" Width="391" Foreground="White" FontSize="22"/>
+                                    <Label Content="本工具中标签或者标记还有id都指的是&lt;物品/流体id&gt;" HorizontalAlignment="Left" Height="36" Margin="42,137,0,0" VerticalAlignment="Top" Width="535" Foreground="White" FontSize="22"/>
+                                </Grid>
+                            </controls:FlipViewItem>
+                            <controls:FlipViewItem Height="400">
+                                <Grid Width="648.666666666667" Background="#FF2E8DEF">
+                                    <Label Content="本程序由Nebulafalls开发" HorizontalAlignment="Left" Height="36" Margin="42,254,0,0" VerticalAlignment="Top" Width="349" Foreground="White" FontSize="22"/>
+                                    <Label Content="然而我的mcbbs名字叫Whost-滑稽菌" HorizontalAlignment="Left" Height="36" Margin="42,290,0,0" VerticalAlignment="Top" Width="411" Foreground="White" FontSize="22"/>
+                                    <Label Content="如果可以请给帖子评分哦 求金粒和人气qwq" HorizontalAlignment="Left" Height="36" Margin="42,60,0,0" VerticalAlignment="Top" Width="470" Foreground="White" FontSize="22"/>
+                                    <Label Content="你的支持是我更新最大的动力" HorizontalAlignment="Left" Height="36" Margin="42,96,0,0" VerticalAlignment="Top" Width="411" Foreground="White" FontSize="22"/>
+                                </Grid>
+                            </controls:FlipViewItem>
+                            <controls:FlipViewItem Height="400">
+                                <Grid Width="648.666666666667" Background="#FF2E8DEF">
+                                    <Grid HorizontalAlignment="Left" Height="222" Margin="38,43,0,0" VerticalAlignment="Top" Width="222" Visibility="Hidden">
+                                        <Grid.Background>
+                                            <ImageBrush ImageSource="picture/支付宝.png"/>
+                                        </Grid.Background>
+                                    </Grid>
+                                    <Grid HorizontalAlignment="Left" Height="222" Margin="336,43,0,0" VerticalAlignment="Top" Width="222" Visibility="Hidden">
+                                        <Grid.Background>
+                                            <ImageBrush ImageSource="picture/微信.png"/>
+                                        </Grid.Background>
+                                    </Grid>
+                                    <Label Content="支付宝" HorizontalAlignment="Left" Height="37" Margin="40,275,0,0" VerticalAlignment="Top" Width="149" Foreground="White" FontSize="24" Visibility="Hidden"/>
+                                    <Label Content="微信" HorizontalAlignment="Left" Height="37" Margin="336,275,0,0" VerticalAlignment="Top" Width="149" Foreground="White" FontSize="24" Visibility="Hidden"/>
+                                    <Label Content="哪怕只给0.01元也是对作者莫大的鼓励呢" HorizontalAlignment="Left" Height="36" Margin="40,317,0,0" VerticalAlignment="Top" Width="411" Foreground="White" FontSize="22" Visibility="Hidden"/>
+                                </Grid>
+                            </controls:FlipViewItem>
+                        </controls:FlipView>
+                        <controls:Tile Title="欢迎使用!" 
+               Width="Auto"
+               Height="Auto" 
+               Count="启动魔改" Margin="24,24,1300,664" Click="Tile_Click" FontSize="36" CountFontSize="50" TitleFontSize="25"/>
+                        <controls:Tile Title="这玩意怎么用？" 
+                            Width="323"
+                            Height="Auto" 
+                            Count="教程" Margin="300,24,971.667,664.333" FontSize="36" CountFontSize="50" TitleFontSize="25" Click="Tile_Click_1" />
+                        <controls:Tile x:Name="检测更新按钮背景" Title="检查更新" 
+                            Width="166"
+                            Height="166" 
+                            Count="" Margin="24,242,1404,493.333" FontSize="36" CountFontSize="38" TitleFontSize="20" Background="#CC119EDA" Click="Jcgx_Click" >
+                            <controls:Tile.BorderBrush>
+                                <ImageBrush/>
+                            </controls:Tile.BorderBrush>
+                            <Grid Width="166" Height="166">
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="picture/未标题-1~1.ico">
+                                        <ImageBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="0.8" ScaleY="0.8"/>
+                                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </ImageBrush.RelativeTransform>
+                                    </ImageBrush>
+                                </Grid.Background>
+                            </Grid>
+                        </controls:Tile>
+                        <controls:Tile Title="欢迎加入滑稽的魔改交流群" 
+                            Width="Auto"
+                            Height="Auto" 
+                            Count="加入qq群" Margin="628,24,535.667,664.333" FontSize="36" CountFontSize="50" TitleFontSize="25" Click="Tile_Click_2" />
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="魔改_1" Header="">
+                    <Grid Margin="-4,-3,-6,148.667">
+                        <Grid x:Name="main"  VerticalAlignment="Stretch" ClipToBounds="True">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="637*"/>
+                                <RowDefinition Height="157*"/>
+                            </Grid.RowDefinitions>
+                            <Canvas ClipToBounds="True">
+                                <TabControl HorizontalAlignment="Left"  VerticalAlignment="Top"  Background="{x:Null}" TabStripPlacement="Left" Height="699" Width="1584" Canvas.Left="10">
+                                    <TabItem x:Name="wjtl" Header="无尽贪婪" Background="{x:Null}">
+                                        <Grid>
+                                            <Viewbox HorizontalAlignment="Left" Height="695" VerticalAlignment="Top" Width="1427" Margin="0,0,0,-2.333">
+                                                <Grid Height="721" Width="1477">
+                                                    <StackPanel x:Name="l1" HorizontalAlignment="Left" Height="75" Margin="16,24,0,0" VerticalAlignment="Top" Width="1178" Orientation="Horizontal">
+                                                        <TextBox x:Name="s1" HorizontalAlignment="Left" Height="55" Margin="10,0,0,0" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s2" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s3" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s4" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s5" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s6" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s7" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s8" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s9" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                    </StackPanel>
+                                                    <StackPanel x:Name="l2" HorizontalAlignment="Left" Height="75" Margin="16,99,0,0" VerticalAlignment="Top" Width="1178" Orientation="Horizontal">
+                                                        <TextBox x:Name="s10" HorizontalAlignment="Left" Height="55" Margin="10,0,0,0" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s11" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s12" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s13" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s14" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s15" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s16" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s17" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s18" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                    </StackPanel>
+                                                    <StackPanel x:Name="l3" HorizontalAlignment="Left" Height="75" Margin="16,178,0,0" VerticalAlignment="Top" Width="1178" Orientation="Horizontal">
+                                                        <TextBox x:Name="s19" HorizontalAlignment="Left" Height="52" Margin="10,0,0,0" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s20" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s21" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s22" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s23" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s24" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s25" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s26" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s27" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                    </StackPanel>
+                                                    <StackPanel x:Name="l4" HorizontalAlignment="Left" Height="75" Margin="16,253,0,0" VerticalAlignment="Top" Width="1178" Orientation="Horizontal">
+                                                        <TextBox x:Name="s28" HorizontalAlignment="Left" Height="54" Margin="10,0,0,0" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s29" HorizontalAlignment="Left" Height="54" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s30" HorizontalAlignment="Left" Height="54" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s31" HorizontalAlignment="Left" Height="54" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s32" HorizontalAlignment="Left" Height="54" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s33" HorizontalAlignment="Left" Height="54" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s34" HorizontalAlignment="Left" Height="54" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s35" HorizontalAlignment="Left" Height="54" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s36" HorizontalAlignment="Left" Height="54" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                    </StackPanel>
+                                                    <StackPanel x:Name="l5" HorizontalAlignment="Left" Height="75" Margin="16,333,0,0" VerticalAlignment="Top" Width="1178" Orientation="Horizontal">
+                                                        <TextBox x:Name="s37" HorizontalAlignment="Left" Height="55" Margin="10,0,0,0" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s38" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s39" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s40" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s41" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s42" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s43" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s44" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s45" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                    </StackPanel>
+                                                    <StackPanel x:Name="l6" HorizontalAlignment="Left" Height="75" Margin="16,412,0,0" VerticalAlignment="Top" Width="1178" Orientation="Horizontal">
+                                                        <TextBox x:Name="s46" HorizontalAlignment="Left" Height="52" Margin="10,0,0,0" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s47" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s48" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s49" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s50" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s51" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s52" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s53" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s54" HorizontalAlignment="Left" Height="52" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                    </StackPanel>
+                                                    <StackPanel x:Name="l7" HorizontalAlignment="Left" Height="75" Margin="16,487,0,0" VerticalAlignment="Top" Width="1178" Orientation="Horizontal">
+                                                        <TextBox x:Name="s55" HorizontalAlignment="Left" Height="55" Margin="10,0,0,0" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s56" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s57" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s58" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s59" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s60" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s61" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s62" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s63" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                    </StackPanel>
+                                                    <StackPanel x:Name="l8" HorizontalAlignment="Left" Height="75" Margin="16,562,0,0" VerticalAlignment="Top" Width="1178" Orientation="Horizontal">
+                                                        <TextBox x:Name="s64" HorizontalAlignment="Left" Height="55" Margin="10,0,0,0" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s65" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s66" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s67" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s68" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s69" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s70" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s71" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s72" HorizontalAlignment="Left" Height="55" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                    </StackPanel>
+                                                    <StackPanel x:Name="l9" HorizontalAlignment="Left" Height="75" Margin="16,637,0,0" VerticalAlignment="Top" Width="1178" Orientation="Horizontal">
+                                                        <TextBox x:Name="s73" HorizontalAlignment="Left" Height="59" Margin="10,0,0,0" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s74" HorizontalAlignment="Left" Height="59" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s75" HorizontalAlignment="Left" Height="59" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s76" HorizontalAlignment="Left" Height="59" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s77" HorizontalAlignment="Left" Height="59" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s78" HorizontalAlignment="Left" Height="59" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s79" HorizontalAlignment="Left" Height="59" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s80" HorizontalAlignment="Left" Height="59" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                        <TextBox x:Name="s81" HorizontalAlignment="Left" Height="59" Margin="10,7.5,0,7.5" TextWrapping="Wrap" Width="120" controls:TextBoxHelper.Watermark="原料"/>
+                                                    </StackPanel>
+                                                    <controls:ToggleSwitch x:Name="无序" Header="无序合成？" Margin="1356,438,0,0" OffLabel="否" OnLabel="是" Width="90" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" >
+                                                        <controls:ToggleSwitch.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleY="0.98"/>
+                                                                <SkewTransform/>
+                                                                <RotateTransform/>
+                                                                <TranslateTransform/>
+                                                            </TransformGroup>
+                                                        </controls:ToggleSwitch.RenderTransform>
+                                                    </controls:ToggleSwitch>
+                                                    <Label Content="成品" HorizontalAlignment="Left" Height="39" Margin="1212,346,0,0" VerticalAlignment="Top" Width="52" Foreground="#FF60B2E0" FontSize="18"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="保存" HorizontalAlignment="Left" Height="32" Margin="1215,440,0,0" VerticalAlignment="Top" Width="65" Click="Button_Click_3"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="打开" HorizontalAlignment="Left" Height="32" Margin="1285,440,0,0" VerticalAlignment="Top" Width="65" Click="Button_Click_7"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="检测空白" HorizontalAlignment="Left" Height="32" Margin="1215,487,0,0" VerticalAlignment="Top" Width="65" Click="Button_Click_5"/>
+                                                    <Button x:Name="输出" Style="{StaticResource AccentedSquareButtonStyle}" Content="输出代码" HorizontalAlignment="Left" Height="32" Margin="1285,487,0,0" VerticalAlignment="Top" Width="65" Click="输出_Click"/>
+                                                    <Button x:Name="qk" Style="{StaticResource AccentedSquareButtonStyle}" Content="清空" HorizontalAlignment="Left" Height="32" Margin="1354,387,0,0" VerticalAlignment="Top" Width="65" Click="Qk_Click"/>
+                                                    <TextBox x:Name="sck" HorizontalAlignment="Left" Margin="1212,385,0,0" TextWrapping="Wrap" Width="120" Height="38" VerticalAlignment="Top"/>
+                                                    <GroupBox Header="中子态素压缩机" HorizontalAlignment="Left" Height="247" Margin="1212,24,0,0" VerticalAlignment="Top" Width="255">
+                                                        <Grid>
+                                                            <TextBox x:Name="z1_无尽贪婪" HorizontalAlignment="Left" Height="37" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" controls:TextBoxHelper.Watermark="&lt;物品名&gt;"/>
+                                                            <Label Content="成品" HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="115"/>
+                                                            <TextBox x:Name="z2_无尽贪婪" HorizontalAlignment="Left" Height="37" Margin="130,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" controls:TextBoxHelper.Watermark="数字"/>
+                                                            <Label Content="数量" HorizontalAlignment="Left" Height="30" Margin="130,10,0,0" VerticalAlignment="Top" Width="47"/>
+                                                            <TextBox x:Name="z3_无尽贪婪" HorizontalAlignment="Left" Height="37" Margin="10,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" controls:TextBoxHelper.Watermark="&lt;物品名&gt;"/>
+                                                            <Label Content="材料" HorizontalAlignment="Left" Height="30" Margin="10,82,0,0" VerticalAlignment="Top" Width="115"/>
+                                                            <Button x:Name="save1_无尽贪婪" Style="{StaticResource AccentedSquareButtonStyle}" Content="保存" HorizontalAlignment="Left" Height="32" Margin="150,133,0,0" VerticalAlignment="Top" Width="65" Click="Save1_无尽贪婪_Click"/>
+                                                            <Button x:Name="open2_无尽贪婪" Style="{StaticResource AccentedSquareButtonStyle}" Content="打开" HorizontalAlignment="Left" Height="32" Margin="150,170,0,0" VerticalAlignment="Top" Width="65" Click="Open2_无尽贪婪_Click"/>
+                                                            <Button x:Name="clear1_无尽贪婪" Style="{StaticResource AccentedSquareButtonStyle}" Content="清除" HorizontalAlignment="Left" Height="32" Margin="10,170,0,0" VerticalAlignment="Top" Width="65" Click="Clear1_无尽贪婪_Click"/>
+                                                            <Button x:Name="output1_无尽贪婪" Style="{StaticResource AccentedSquareButtonStyle}" Content="输出" HorizontalAlignment="Left" Height="32" Margin="80,170,0,0" VerticalAlignment="Top" Width="65" Click="Output1_无尽贪婪_Click"/>
+                                                        </Grid>
+                                                    </GroupBox>
+                                                </Grid>
+                                            </Viewbox>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem x:Name="rlpz" Header="热力膨胀">
+                                        <Grid Margin="25,-10,0,-4.333">
+                                            <GroupBox Header="熔岩炉" HorizontalAlignment="Left" Height="205" Margin="11,21,0,0" VerticalAlignment="Top" Width="332">
+                                                <Grid Margin="0,0,0,-2.333">
+
+                                                    <TextBox x:Name="r1" HorizontalAlignment="Left" Height="26" Margin="10,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" controls:TextBoxHelper.Watermark="执行一次消耗的rf"/>
+                                                    <Label Content="能量" HorizontalAlignment="Left" Height="28" Margin="10,10,0,0" VerticalAlignment="Top" Width="98"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="输出" HorizontalAlignment="Left" Height="25" Margin="225,115,0,0" VerticalAlignment="Top" Width="48" Click="Button_Click_9"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="清除" HorizontalAlignment="Left" Height="25" Margin="172,115,0,0" VerticalAlignment="Top" Width="48" Click="Button_Click_8"/>
+                                                    <Button x:Name="open1" Style="{StaticResource AccentedSquareButtonStyle}" Content="打开" HorizontalAlignment="Left" Height="25" Margin="225,76,0,0" VerticalAlignment="Top" Width="48" Click="Open1_Click"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="保存" HorizontalAlignment="Left" Height="25" Margin="172,76,0,0" VerticalAlignment="Top" Width="48" Click="Button_Click_10"/>
+                                                    <TextBox x:Name="r2" HorizontalAlignment="Left" Height="26" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" controls:TextBoxHelper.Watermark="要熔为液体的物品ID"/>
+                                                    <Label Content="物品输入" HorizontalAlignment="Left" Height="28" Margin="10,64,0,0" VerticalAlignment="Top" Width="98"/>
+                                                    <Label Content="液体输出" HorizontalAlignment="Left" Height="28" Margin="132,10,0,0" VerticalAlignment="Top" Width="98"/>
+                                                    <TextBox x:Name="r4" HorizontalAlignment="Left" Height="26" Margin="244,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" controls:TextBoxHelper.Watermark="Mb"/>
+                                                    <Label Content="产量" HorizontalAlignment="Left" Height="28" Margin="244,10,0,0" VerticalAlignment="Top" Width="52"/>
+                                                    <controls:ToggleSwitch x:Name="d1" Header=" 删除合成" Margin="81,115,0,-2" OffLabel="否" OnLabel="是" Width="90" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" IsCheckedChanged="无序_Copy_IsCheckedChanged" >
+                                                        <controls:ToggleSwitch.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
+                                                                <SkewTransform/>
+                                                                <RotateTransform/>
+                                                                <TranslateTransform/>
+                                                            </TransformGroup>
+                                                        </controls:ToggleSwitch.RenderTransform>
+                                                    </controls:ToggleSwitch>
+                                                    <TextBox x:Name="r3" HorizontalAlignment="Left" Height="26" Margin="132,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" controls:TextBoxHelper.Watermark="被熔后的液体ID"/>
+                                                </Grid>
+                                            </GroupBox>
+                                            <GroupBox Header="红石炉" HorizontalAlignment="Left" Height="221" Margin="11,243,0,0" VerticalAlignment="Top" Width="300">
+                                                <Grid Margin="-5,-6,-4.667,-5">
+
+                                                    <TextBox x:Name="r5" HorizontalAlignment="Left" Height="30" Margin="14,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" controls:TextBoxHelper.Watermark="执行一次消耗的rf"/>
+                                                    <Label Content="能量" HorizontalAlignment="Left" Height="26" Margin="14,10,0,0" VerticalAlignment="Top" Width="98"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="输出" HorizontalAlignment="Left" Height="29" Margin="233,153,0,0" VerticalAlignment="Top" Width="56" Click="Button_Click_11"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="清除" HorizontalAlignment="Left" Height="29" Margin="172,153,0,0" VerticalAlignment="Top" Width="55" Click="Button_Click_12"/>
+                                                    <Button x:Name="open2" Style="{StaticResource AccentedSquareButtonStyle}" Content="打开" HorizontalAlignment="Left" Height="29" Margin="233,108,0,0" VerticalAlignment="Top" Width="56" Click="Open2_Click"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="保存" HorizontalAlignment="Left" Height="29" Margin="172,108,0,0" VerticalAlignment="Top" Width="55" Click="Button_Click_13"/>
+                                                    <TextBox x:Name="r6" HorizontalAlignment="Left" Height="31" Margin="14,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" controls:TextBoxHelper.Watermark="被燃烧的物体ID"/>
+                                                    <Label Content="物品输入" HorizontalAlignment="Left" Height="26" Margin="14,71,0,0" VerticalAlignment="Top" Width="98"/>
+                                                    <Label Content="物品输出" HorizontalAlignment="Left" Height="26" Margin="159,10,0,0" VerticalAlignment="Top" Width="98"/>
+                                                    <controls:ToggleSwitch x:Name="d2" Header=" 删除合成" Margin="13,133,0,0" OffLabel="否" OnLabel="是" Width="105" Height="69" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" IsCheckedChanged="D2_IsCheckedChanged" >
+                                                        <controls:ToggleSwitch.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
+                                                                <SkewTransform/>
+                                                                <RotateTransform/>
+                                                                <TranslateTransform/>
+                                                            </TransformGroup>
+                                                        </controls:ToggleSwitch.RenderTransform>
+                                                    </controls:ToggleSwitch>
+                                                    <TextBox x:Name="r7" HorizontalAlignment="Left" Height="30" Margin="155,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" controls:TextBoxHelper.Watermark="燃烧后的产物ID"/>
+                                                </Grid>
+                                            </GroupBox>
+                                            <GroupBox Header="有机灌注机" HorizontalAlignment="Left" Height="205" Margin="348,21,0,0" VerticalAlignment="Top" Width="434">
+                                                <Grid Margin="-5,-6,-4.667,-5">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="95*"/>
+                                                        <ColumnDefinition Width="8*"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <TextBox x:Name="r_能量_有机灌注机" HorizontalAlignment="Left" Height="30" Margin="14,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" controls:TextBoxHelper.Watermark="执行一次消耗的rf"/>
+                                                    <Label Content="能量" HorizontalAlignment="Left" Height="26" Margin="14,10,0,0" VerticalAlignment="Top" Width="98"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="输出" HorizontalAlignment="Left" Height="29" Margin="338,139,0,0" VerticalAlignment="Top" Width="56" Grid.ColumnSpan="2" Click="Button_Click_17"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="清除" HorizontalAlignment="Left" Height="29" Margin="277,139,0,0" VerticalAlignment="Top" Width="55" Click="Button_Click_16"/>
+                                                    <Button x:Name="open3" Style="{StaticResource AccentedSquareButtonStyle}" Content="打开" HorizontalAlignment="Left" Height="29" Margin="338,94,0,0" VerticalAlignment="Top" Width="56" Grid.ColumnSpan="2" Click="Open3_Click"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="保存" HorizontalAlignment="Left" Height="29" Margin="277,94,0,0" VerticalAlignment="Top" Width="55" Click="Button_Click_20"/>
+                                                    <TextBox x:Name="r_物品1输入_有机灌注机" HorizontalAlignment="Left" Height="31" Margin="14,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" controls:TextBoxHelper.Watermark="输入物品1"/>
+                                                    <Label Content="物品输入" HorizontalAlignment="Left" Height="26" Margin="14,71,0,0" VerticalAlignment="Top" Width="98"/>
+                                                    <Label Content="物品输出" HorizontalAlignment="Left" Height="26" Margin="131,10,0,0" VerticalAlignment="Top" Width="98"/>
+                                                    <controls:ToggleSwitch x:Name="d3" Header=" 删除合成" Margin="44,122,0,-9.333" OffLabel="否" OnLabel="是" Width="105" Height="69" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" IsCheckedChanged="D2_IsCheckedChanged" >
+                                                        <controls:ToggleSwitch.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
+                                                                <SkewTransform/>
+                                                                <RotateTransform/>
+                                                                <TranslateTransform/>
+                                                            </TransformGroup>
+                                                        </controls:ToggleSwitch.RenderTransform>
+                                                    </controls:ToggleSwitch>
+                                                    <TextBox x:Name="r_产物1_有机灌注级" HorizontalAlignment="Left" Height="30" Margin="131,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" controls:TextBoxHelper.Watermark="产物1"/>
+                                                    <TextBox x:Name="r_物品2输入_有机灌注机" HorizontalAlignment="Left" Height="31" Margin="117,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" controls:TextBoxHelper.Watermark="输入物品2"/>
+                                                    <TextBox x:Name="r_产物2_有机灌注级" HorizontalAlignment="Left" Height="30" Margin="221,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" controls:TextBoxHelper.Watermark="产物2"/>
+                                                    <TextBox x:Name="r_产物2产生几率_有机灌注级" HorizontalAlignment="Left" Height="30" Margin="308,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="99" controls:TextBoxHelper.Watermark="产物2产生几率" Grid.ColumnSpan="2"/>
+                                                    <Label Content="%" HorizontalAlignment="Left" Height="26" Margin="7,36,0,0" VerticalAlignment="Top" Width="21" Grid.Column="1"/>
+                                                </Grid>
+                                            </GroupBox>
+                                            <GroupBox Header="粉碎机" HorizontalAlignment="Left" Height="221" Margin="316,243,0,0" VerticalAlignment="Top" Width="325">
+                                                <Grid Margin="-5,-6,-4.667,-5">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition Width="0*"/>
+                                                        <ColumnDefinition Width="0*"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <TextBox x:Name="r_能量_粉碎机" HorizontalAlignment="Left" Height="30" Margin="14,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" controls:TextBoxHelper.Watermark="执行一次消耗的rf"/>
+                                                    <Label Content="能量" HorizontalAlignment="Left" Height="26" Margin="14,10,0,0" VerticalAlignment="Top" Width="98"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="输出" HorizontalAlignment="Left" Height="29" Margin="256,67,0,0" VerticalAlignment="Top" Width="56" Click="Button_Click_18"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="清除" HorizontalAlignment="Left" Height="29" Margin="256,33,0,0" VerticalAlignment="Top" Width="55" Click="Button_Click_19"/>
+                                                    <Button x:Name="open4" Style="{StaticResource AccentedSquareButtonStyle}" Content="打开" HorizontalAlignment="Left" Height="29" Margin="208,153,0,0" VerticalAlignment="Top" Width="56"/>
+                                                    <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="保存" HorizontalAlignment="Left" Height="29" Margin="147,153,0,0" VerticalAlignment="Top" Width="55"/>
+                                                    <TextBox x:Name="r_物品1输入_粉碎机" HorizontalAlignment="Left" Height="31" Margin="14,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" controls:TextBoxHelper.Watermark="输入物品1"/>
+                                                    <Label Content="物品输入" HorizontalAlignment="Left" Height="26" Margin="14,71,0,0" VerticalAlignment="Top" Width="98"/>
+                                                    <Label Content="物品输出" HorizontalAlignment="Left" Height="26" Margin="131,10,0,0" VerticalAlignment="Top" Width="98"/>
+                                                    <controls:ToggleSwitch x:Name="d4" Header=" 删除合成" Margin="27,132,0,-3.333" OffLabel="否" OnLabel="是" Width="105" Height="69" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" IsCheckedChanged="D2_IsCheckedChanged" >
+                                                        <controls:ToggleSwitch.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
+                                                                <SkewTransform/>
+                                                                <RotateTransform/>
+                                                                <TranslateTransform/>
+                                                            </TransformGroup>
+                                                        </controls:ToggleSwitch.RenderTransform>
+                                                    </controls:ToggleSwitch>
+                                                    <TextBox x:Name="r_产物1_粉碎机" HorizontalAlignment="Left" Height="30" Margin="131,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" controls:TextBoxHelper.Watermark="产物1"/>
+                                                    <TextBox x:Name="r_产物2_粉碎机" HorizontalAlignment="Left" Height="30" Margin="131,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" controls:TextBoxHelper.Watermark="产物2"/>
+                                                    <TextBox x:Name="r_产物2几率_粉碎机" HorizontalAlignment="Left" Height="30" Margin="131,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" controls:TextBoxHelper.Watermark="产物2产生几率"/>
+                                                    <Label Content="%" HorizontalAlignment="Left" Height="26" Margin="243,110,0,0" VerticalAlignment="Top" Width="21"/>
+                                                </Grid>
+                                            </GroupBox>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem x:Name="zwmf" Header="植物魔法">
+                                        <Grid/>
+                                    </TabItem>
+                                </TabControl>
+                            </Canvas>
+                            <GridSplitter 
+              HorizontalAlignment="Stretch" 
+              VerticalAlignment="Top"
+              Background="#FFB3B3B3" 
+              ShowsPreview="true"
+              ResizeDirection="Rows"
+              Height="5" Foreground="#FF67BEFF" Margin="-5,0.333,-25,0" Grid.Row="1"/>
+                            <TextBox x:Name="kztsc" HorizontalAlignment="Stretch"  Margin="10,19.333,98,17.667" Grid.Row="1" TextWrapping="Wrap" controls:TextBoxHelper.Watermark="输出..." Foreground="#FF868686" TextChanged="TextBox_TextChanged" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" />
+                            <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="复制" HorizontalAlignment="Left" Height="33" Margin="1510,19.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="64" FontFamily="Microsoft YaHei UI" Click="Button_Click_1"/>
+                            <Button Style="{StaticResource AccentedSquareButtonStyle}" Content="清空" HorizontalAlignment="Left" Height="33" Margin="1510,57.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="64" FontFamily="Microsoft YaHei UI" Click="Button_Click_4"/>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="setting_ui">
+                    <Grid HorizontalAlignment="Left" Height="732" VerticalAlignment="Top" Width="1196" Margin="-9,-4,-3.667,-0.667">
+                        <Label Content="施工中。。。" HorizontalAlignment="Left" Height="73" Margin="176,173,0,0" VerticalAlignment="Top" Width="365"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <Button Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" Content="" Height="71" Margin="1559,79,-39,0" VerticalAlignment="Top" FontSize="24" Click="Button_Click_2" Width="70.7">
+                <Button.Background>
+                    <ImageBrush  Stretch="Uniform" ImageSource="picture/未标题-1~1.ico">
+                        <ImageBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="0.6" ScaleY="0.6"/>
+                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ImageBrush.RelativeTransform>
+                    </ImageBrush>
+                </Button.Background>
+            </Button>
+            <Grid x:Name="侧边栏模拟" HorizontalAlignment="Right" Width="449">
+
+            </Grid>
+
+        </Grid>
+    </Viewbox>
+</controls:MetroWindow>
